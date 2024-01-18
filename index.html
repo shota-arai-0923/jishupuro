@@ -9,15 +9,36 @@
         <!-- A-FrameのARシーンを作成 -->
         <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
             <!-- 緯度経度を指定して3Dエンティティを表示 -->
-            
-                <!-- 3Dオブジェクトを追加 -->
-                <a-entity id="ca-container" class="ca-container" rotation="0 0 0"
-                    animation="property: rotation; from: 0 0 0; to: 0 360 360; loop: true; dur: 50000; easing: linear"
-                    gps-entity-place="latitude: 35.712079; longitude: 139.760670;">
-                    <!-- ここに表示させたい3Dオブジェクトを追加 -->
-                </a-entity>
-                <a-camera gps-camera="minDistance:1; maxDistance:5" rotation-reader> </a-camera>
-        
+            <a-entity id="ca-container" class="ca-container" rotation="0 0 0"
+                animation="property: rotation; from: 0 0 0; to: 0 360 360; loop: true; dur: 50000; easing: linear"
+                gps-entity-place="latitude: 35.712079; longitude: 139.760670;">
+            </a-entity>
+
+            <!-- カメラを設定 -->
+            <a-camera gps-camera="minDistance:1; maxDistance:5" rotation-reader> </a-camera>
         </a-scene>
+
+        <script>
+            // ページが完全に読み込まれた後に実行されるコード
+            document.addEventListener('DOMContentLoaded', function () {
+                // カメラを取得
+                var camera = document.querySelector('a-camera');
+                
+                // カメラが移動したときに呼ばれるイベント
+                camera.addEventListener('componentchanged', function (event) {
+                    // カメラとエンティティの距離を計算
+                    var cameraPosition = camera.object3D.position;
+                    var containerPosition = document.getElementById('ca-container').object3D.position;
+                    var distance = cameraPosition.distanceTo(containerPosition);
+
+                    // 一定の距離を超えた場合、エンティティを非表示にする
+                    if (distance > 10) {
+                        document.getElementById('ca-container').setAttribute('visible', 'false');
+                    } else {
+                        document.getElementById('ca-container').setAttribute('visible', 'true');
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
