@@ -13,10 +13,11 @@
                 <!-- 3Dオブジェクトを追加 -->
                 <a-entity id="ca-container" class="ca-container" rotation="0 0 0"
                     animation="property: rotation; from: 0 0 0; to: 0 360 360; loop: true; dur: 50000; easing: linear"
-                    gps-entity-place="latitude: 35.712079; longitude: 139.760670;"></a-entity>
+                    gps-entity-place="latitude: 35.712079; longitude: 139.760670;">
                     <!-- ここに表示させたい3Dオブジェクトを追加 -->
                 </a-entity>
-            </a-entity>
+                <a-camera gps-camera="minDistance:3; maxDistance:10" rotation-reader> </a-camera>
+        
         </a-scene>
     </body>
 </html>
