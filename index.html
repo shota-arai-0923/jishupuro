@@ -9,12 +9,12 @@
         <!-- A-FrameのARシーンを作成 -->
         <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
             <!-- 緯度経度を指定して3Dエンティティを表示 -->
-            <a-entity gps-entity-place="latitude: 35.712079; longitude: 139.760670;">
+            
                 <!-- 3Dオブジェクトを追加 -->
                 <a-entity id="ca-container" class="ca-container" rotation="0 0 0"
-                    animation="property: rotation; from: 0 0 0; to: 0 360 360; loop: true; dur: 50000; easing: linear">
+                    animation="property: rotation; from: 0 0 0; to: 0 360 360; loop: true; dur: 50000; easing: linear"
+                    gps-entity-place="latitude: 35.712079; longitude: 139.760670;"></a-entity>
                     <!-- ここに表示させたい3Dオブジェクトを追加 -->
-                    
                 </a-entity>
             </a-entity>
         </a-scene>
