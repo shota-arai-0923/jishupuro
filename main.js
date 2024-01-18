@@ -158,16 +158,13 @@ function generate() {
                     }
                 }
                 neighbors -= currentState[x][y][z];
-                // loneliness
+                
                 if (currentState[x][y][z] == 1 && neighbors < 2)
-                    nextState[x][y][z] = 0;
-                // overpopulation
+                    nextState[x][y][z] = 0;              
                 else if (currentState[x][y][z] == 1 && neighbors > 5)
-                    nextState[x][y][z] = 0;
-                // reqroduction
+                    nextState[x][y][z] = 0;                
                 else if (currentState[x][y][z] == 0 && neighbors == 5)
-                    nextState[x][y][z] = 1;
-                //stasis
+                    nextState[x][y][z] = 1;          
                 else nextState[x][y][z] = currentState[x][y][z];
             }
         }
