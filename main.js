@@ -11,8 +11,8 @@ let currentState;
 let nextState;
 let elArray;
 
-let onColor = "#333333";
-let middleColor = "#9e9e9e";
+let onColor = "#203744";
+let middleColor = "#84a2d4";
 let offColor = "white";
 
 let caContainer = null;
